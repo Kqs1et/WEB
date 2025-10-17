@@ -1,0 +1,29 @@
+const readline = require("readline");
+const r1 = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+r1.question("Какая температура на улице? ", (temp) => {
+  r1.question("Идет дождь? (yes/no): ", (rain) => {
+    temp = Number(temp);
+
+    if (rain === "yes") {
+      temp -= 5;
+    }
+
+    console.log("Ощущается как " + temp + "°C");
+
+    if (temp < 0) {
+      console.log("Холодно!");
+    } else if (temp < 15) {
+      console.log("Прохладно.");
+    } else if (temp < 25) {
+      console.log("Тепло.");
+    } else {
+      console.log("Жарко!");
+    }
+
+    r1.close();
+  });
+});
